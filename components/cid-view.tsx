@@ -25,14 +25,26 @@ export function CidView({ data, cid }: any) {
         return;
       }
       // API call to verify the content
-      const isVerified = await verify(cid, address, data[0].date_pinned);
-      if (!isVerified) {
+      const verifyReq = await fetch("/api/verify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          cid: cid,
+          address: address,
+          date: data[0].date_pinned,
+        }),
+      });
+      if (!verifyReq.ok) {
         setVerified(false);
         setVerifyLoading(false);
         setComplete(true);
         return;
       }
-      setVerified(isVerified);
+      const verifyData = await verifyReq.json();
+      console.log(verifyData);
+      setVerified(verifyData);
       setVerifyLoading(false);
       setComplete(true);
     } catch (error) {
