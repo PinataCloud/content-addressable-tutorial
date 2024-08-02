@@ -1,7 +1,7 @@
 "use client";
 
 import { generatePinataKey, uploadFile } from "@/utils/upload";
-import { getAccessToken, usePrivy, useWallets } from "@privy-io/react-auth";
+import { getAccessToken, useWallets } from "@privy-io/react-auth";
 import { useState } from "react";
 import { domain, types } from "@/utils/712";
 

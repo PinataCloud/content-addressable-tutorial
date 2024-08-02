@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { isAddress } from "viem";
-import { verify } from "@/utils/verify";
 
 export function CidView({ data, cid }: any) {
   const [verifyLoading, setVerifyLoading] = useState(false);
